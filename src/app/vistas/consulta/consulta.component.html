@@ -1,0 +1,231 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="container">
+      <h2>Pagina de Consultas</h2>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-8">
+              <div class="card card-info card-outline card-tabs " style="width:1200px; max-width: 1200px">
+                  
+                  <div class="card-header p-0 pt-1 border-bottom-0 ">
+                      <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill"
+                                  href="#consulta-1" role="tab" aria-controls="pagina1"
+                                  aria-selected="true">Primera Consulta</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill"
+                                  href="#consulta-2" role="tab"
+                                  aria-controls="pagina2" aria-selected="false">Segunda Consulta</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill"
+                                  href="#consulta-3" role="tab"
+                                  aria-controls="pagina3" aria-selected="false">Tercera Consulta</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill"
+                                  href="#consulta-4" role="tab"
+                                  aria-controls="pagina4" aria-selected="false">Cuarta Consulta</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill"
+                                  href="#consulta-5" role="tab"
+                                  aria-controls="pagina5" aria-selected="false">Quinta Consulta</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="card-body">
+                      <div class="tab-content" id="pagina1">
+                          <div class="tab-pane fade show active" id="consulta-1" role="tabpanel"
+                              aria-labelledby="pagina1">
+                              <div class="cabecera" style="margin: 5px; padding: 10px; border:1px solid #b5b9b7 ; border-radius: 6px;">
+                                <p>Esta consulta genera una lista a traves de un parámetro de estado</p>
+                                <input name="estado" type="text" id="estado">
+                                <button  class="btn btn-sm btn-info ml-2" (click)="getPorEstado('REGISTRADO')" >Generar Consulta</button>
+                              </div>
+                              <div>
+                                <table class="table">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th scope="col">Distrito</th>
+                                      <th scope="col">Evento</th>
+                                      <th scope="col">Lugar</th>
+                                      <th scope="col">Hora</th>
+                                      <th scope="col">Estado</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody> @for (item of listaagenda; track item) {
+                                    <tr>
+                                     <td>{{ item.distrito }}</td>
+                                     <td>{{ item.evento }}</td>
+                                     <td>{{ item.lugar }}</td>
+                                     <td>{{ item.hora }}</td>
+                                     <td>{{ item.estado }}</td>
+                                    </tr>
+                                  }
+                                  </tbody>
+                                </table>
+                              
+                              </div>
+                           
+                             
+                          </div>
+                        <!-- primera pagina -->
+                          <div class="tab-pane fade" id="consulta-2" role="tabpanel"
+                              aria-labelledby="pagina2">
+                              <div class="cabecera" style="margin: 5px; padding: 10px; border:1px solid #b5b9b7 ; border-radius: 6px;">
+                                <p>Esta consulta genera una lista a traves de un parámetro de estado y usuario</p>
+                                <input class="mr-2" name="estado" type="text" placeholder="Ingrese Estado" id="estado2"> <input name="usuario" type="text" placeholder="Ingrese Usuario" id="usuario">
+                                <button  class="btn btn-sm btn-info ml-2" (click)="getPorEstadoUsuario('CONFIRMADO','Martha')" >Generar Consulta por E/U</button>
+                              </div>
+                              <div>
+                                <table class="table">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th scope="col">Distrito</th>
+                                      <th scope="col">Evento</th>
+                                      <th scope="col">Lugar</th>
+                                      <th scope="col">Hora</th>
+                                      <th scope="col">Estado</th>
+                                      <th scope="col">Usuario</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody> @for (item of listaagenda; track item) {
+                                    <tr>
+                                     <td>{{ item.distrito }}</td>
+                                     <td>{{ item.evento }}</td>
+                                     <td>{{ item.lugar }}</td>
+                                     <td>{{ item.hora }}</td>
+                                     <td>{{ item.estado }}</td>
+                                     <td>{{ item.usuario }}</td>
+                                    </tr>
+                                  }
+                                  </tbody>
+                                </table>
+                              
+                              </div>
+                           
+                          </div>
+
+                          
+                         <!-- /*  --  =========tercer consulta por distrito ================ -- */ -->
+                          <div class="tab-pane fade" id="consulta-3" role="tabpanel"
+                              aria-labelledby="pagina3">
+                              <div class="cabecera" style="margin: 5px; padding: 10px; border:1px solid #b5b9b7 ; border-radius: 6px;">
+                                <p>Esta consulta genera una lista a traves de un Distrito</p>
+                                <input name="distrito" type="text" placeholder="Distrito" id="distrito">
+                                <button  class="btn btn-sm btn-info ml-2" (click)="getPorDistrito('CHALLA')" >Generar Consulta</button>
+                              </div>
+                              <div>
+                                <table class="table">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th scope="col">Distrito</th>
+                                      <th scope="col">Evento</th>
+                                      <th scope="col">Lugar</th>
+                                      <th scope="col">Hora</th>
+                                      <th scope="col">Estado</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody> @for (item of listaagenda; track item) {
+                                    <tr>
+                                     <td>{{ item.distrito }}</td>
+                                     <td>{{ item.evento }}</td>
+                                     <td>{{ item.lugar }}</td>
+                                     <td>{{ item.hora }}</td>
+                                     <td>{{ item.estado }}</td>
+                                    </tr>
+                                  }
+                                  </tbody>
+                                </table>
+                              
+                              </div>
+                          </div>
+                       <!-- ===================== cuarta consulta por costo ============ -->
+                          <div class="tab-pane fade" id="consulta-4" role="tabpanel"
+                              aria-labelledby="pagina4">
+                              <div class="cabecera" style="margin: 5px; padding: 10px; border:1px solid #b5b9b7 ; border-radius: 6px;">
+                                <p>Esta consulta genera una lista a traves de un paramtro de costo</p>
+                                <input name="costo" type="text" placeholder="Costo" id="costo">
+                                <button  class="btn btn-sm btn-info ml-2" (click)="getPorCosto('80')" >Generar Consulta</button>
+                              </div>
+                              <div>
+                                <table class="table">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th scope="col">Distrito</th>
+                                      <th scope="col">Evento</th>
+                                      <th scope="col">Lugar</th>
+                                      <th scope="col">Hora</th>
+                                      <th scope="col">Costo</th>
+                                      <th scope="col">Estado</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody> @for (item of listaagenda; track item) {
+                                    <tr>
+                                     <td>{{ item.distrito }}</td>
+                                     <td>{{ item.evento }}</td>
+                                     <td>{{ item.lugar }}</td>
+                                     <td>{{ item.hora }}</td>
+                                     <td>{{ item.costo_apostilla }}</td>
+                                     <td>{{ item.estado }}</td>
+                                    </tr>
+                                  }
+                                  </tbody>
+                                </table>
+                              
+                              </div>
+                          </div>
+                      <!-- ===================== quinta consulta agrupar ============ -->
+                          <div class="tab-pane fade" id="consulta-5" role="tabpanel"
+                              aria-labelledby="pagina5">
+                              <div class="cabecera" style="margin: 5px; padding: 10px; border:1px solid #b5b9b7 ; border-radius: 6px;">
+                                <p>Esta consulta genera una lista Agrupando los costos por distrito</p>
+                                
+                                <button  class="btn btn-sm btn-info ml-2" (click)="getAgrupar()" >Generar Consulta</button>
+                              </div>
+                              <div>
+                                <table class="table">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th scope="col">Distrito</th>
+                                      <th scope="col">Total Costo</th>
+                                     
+                                    </tr>
+                                  </thead>
+                                  <tbody> @for (item of listaagenda; track item) {
+                                    <tr>
+                                     <td>{{ item._id }}</td>
+                                     <td>{{ item.Costo_total }}</td>
+                                     
+                                    </tr>
+                                  }
+                                  </tbody>
+                                </table>
+                              
+                              </div>
+                          </div>
+                              
+                        </div>
+                    </div>
+                  </div>
+                  </div>
+                  
+
+                  <!-- /.card -->
+              
+              </div>
+          </div>
+      </div>
+
+      </div>
+
+    </div>
+  
+
+
+<app-footer></app-footer>

@@ -1,0 +1,218 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="card mt-2" style="max-width: 600px;">
+        <form>
+        <div class="card-header bg-dark">
+          Formulario de Agenda Electronica
+        </div>
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="evento" class="form-label">Descripcion de evento</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="evento"
+                name="evento"
+                [(ngModel)]="agenda.evento"
+              />
+            </div>
+          </div>
+          <div class="row mb-2" >
+            <div class="col-4">
+              <label for="distrito" class="form-label">Distrito :</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="distrito"
+                name="distrito"
+                [(ngModel)]="agenda.distrito"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="fecha" class="form-label">Fecha :</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="date"
+                class="form-control"
+                id="fecha"
+                name="fecha"
+                [(ngModel)]="agenda.fecha"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="hora" class="form-label">Hora :</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="hora"
+                name="hora"
+                [(ngModel)]="agenda.hora"
+              />
+            </div>
+          </div>
+          
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="lugar" class="form-label">Lugar :</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="lugar"
+                name="lugar"
+                [(ngModel)]="agenda.lugar"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="personal_contacto" class="form-label">Personal Contacto :</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="personal_contacto"
+                name="personal_contacto"
+                [(ngModel)]="agenda.personal_contacto"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="telefono_contacto" class="form-label">Telefono Contacto</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="telefono_contacto"
+                name="telefono_contacto"
+                [(ngModel)]="agenda.telefono_contacto"
+              />
+            </div>
+          </div>                                                                      
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="costo_apostilla" class="form-label">Consto Postillaje :</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="number"
+                class="form-control"
+                id="costo_apostilla"
+                name="costo_apostilla"
+                [(ngModel)]="agenda.costo_apostilla"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="usuario" class="form-label">Usuario : </label>
+            </div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="usuario"
+                name="usuario"
+                [(ngModel)]="agenda.usuario"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="estado" class="form-label">Estado :</label>
+            </div>
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                id="estado"
+                name="estado"
+                [(ngModel)]="agenda.estado"
+              />
+            </div>
+          </div>                              
+            
+        </div>
+        <div class="card-footer">
+          <button (click)="agregarAgenda()" class="btn btn-info">
+            Guardar Registro
+          </button>
+        </div>
+      </form>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container-fluid">
+      <div class="card">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Evento</th>
+              <th scope="col">Lugar</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Distrito</th>
+              <th scope="col">Personal Contacto</th>
+              <th scope="col">Celular Contacto</th>
+              <th scope="col">Costo Apostillaje</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Estado</th>
+              <th style="width: 300px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of listaagenda; track item) {
+            <tr>
+              <td>{{ item.fecha }}</td>
+              <td>{{ item.evento }}</td>
+              <td>{{ item.lugar }}</td>
+              <td>{{ item.hora }}</td>
+              <td>{{ item.distrito }}</td>
+              <td>{{ item.personal_contacto }}</td>
+              <td>{{ item.telefono_contacto }}</td>
+              <td>{{ item.costo_apostilla }}</td>
+              <td>{{ item.usuario }}</td>
+              <td>{{ item.estado }}</td>
+              <td>
+                <button class="btn btn-sm btn-success mr-1"  type="button" (click)="editarAgenda(item)">
+                  <i class="far fa-edit"></i> Editar
+                </button>
+                <button class="btn btn-sm btn-danger" type="button" (click)="eliminarAgenda(item)">
+                  <i class="fas fa-trash-alt mr-1"></i>Eliminar
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
